@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnterGamePanel: {fileID: 0}
   ConnectionStatusPanel: {fileID: 0}
+  LobbyPanel: {fileID: 0}

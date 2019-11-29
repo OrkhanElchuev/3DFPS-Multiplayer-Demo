@@ -2,32 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class LaunchManager : MonoBehaviourPunCallbacks
 {
     public GameObject EnterGamePanel;
     public GameObject ConnectionStatusPanel;
+    public GameObject LobbyPanel;
 
+
+
+    #region Private Methods
     private void Start()
     {
         EnterGamePanel.SetActive(true);
         ConnectionStatusPanel.SetActive(false);
+        LobbyPanel.SetActive(false);
     }
 
-    #region Photon Callbacks
-
-    // This method is called on connection to the master server (Photon Server)
-    public override void OnConnectedToMaster()
+    private void CreateAndJoinRoom()
     {
-        // Display the name of connected player
-        Debug.Log(PhotonNetwork.NickName + " connected to the photon server.");
+        // Generate a random name for a room
+        string randomRoomName = "Room " + Random.Range(0, 10000);
+        // Create and set room configurations
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.IsOpen = true;
+        roomOptions.IsVisible = true;
+        roomOptions.MaxPlayers = 20;
+        // Create a room with generated name and defined configurations
+        PhotonNetwork.CreateRoom(randomRoomName, roomOptions);
     }
 
-    // This method is called on connection to the Internet
-    public override void OnConnected()
-    {
-        Debug.Log("Connected to the Internet");
-    }
+    #endregion
+
+    #region Public Methods
 
     // Connect to photon server
     public void ConnectToPhotonServer()
@@ -40,5 +48,51 @@ public class LaunchManager : MonoBehaviourPunCallbacks
             EnterGamePanel.SetActive(false);
         }
     }
+
+    // Join an existing random room in server 
+    public void JoinRandomRoom()
+    {
+        PhotonNetwork.JoinRandomRoom();
+    }
+
+    #endregion
+
+    #region Photon Callbacks
+
+    // In case of failing to join random room in server
+    public override void OnJoinRandomFailed(short returnCode, string message)
+    {
+        base.OnJoinRandomFailed(returnCode, message);
+        Debug.Log(message);
+        CreateAndJoinRoom();
+    }
+
+    // This method is called on connection to the master server (Photon Server)
+    public override void OnConnectedToMaster()
+    {
+        // Display the name of connected player
+        Debug.Log(PhotonNetwork.NickName + " connected to the photon server.");
+        LobbyPanel.SetActive(true);
+        ConnectionStatusPanel.SetActive(false);
+    }
+
+    // This method is called on connection to the Internet
+    public override void OnConnected()
+    {
+        Debug.Log("Connected to the Internet");
+    }
+
+    public override void OnJoinedRoom()
+    {
+        Debug.Log(PhotonNetwork.NickName + " joined to " + PhotonNetwork.CurrentRoom.Name);
+    }
+
+    // This method is called when remote player enters an existing room 
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        Debug.Log(newPlayer.NickName + " joined to " + PhotonNetwork.CurrentRoom.Name 
+        + " " + PhotonNetwork.CurrentRoom.PlayerCount);
+    }
+
     #endregion
 }

@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &29642194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 757136115295772925, guid: df46d4b79523ffe4f9c4753af6e2d8e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1566614620190029080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &76918347
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +378,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1184255397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1184255397, guid: df46d4b79523ffe4f9c4753af6e2d8e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1566614620190029080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1335491074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3721560649399580093, guid: df46d4b79523ffe4f9c4753af6e2d8e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1566614620190029080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1566614620190029080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -379,6 +397,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 778383663, guid: df46d4b79523ffe4f9c4753af6e2d8e5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 199366942}
     - target: {fileID: 387818170205921563, guid: df46d4b79523ffe4f9c4753af6e2d8e5,
         type: 3}
       propertyPath: m_Name
@@ -503,6 +525,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2365650871166815676, guid: c1c935e35b1a678459ef2da32c447195,
+        type: 3}
+      propertyPath: EnterGamePanel
+      value: 
+      objectReference: {fileID: 29642194}
+    - target: {fileID: 2365650871166815676, guid: c1c935e35b1a678459ef2da32c447195,
+        type: 3}
+      propertyPath: ConnectionStatusPanel
+      value: 
+      objectReference: {fileID: 1335491074}
+    - target: {fileID: 2365650871166815676, guid: c1c935e35b1a678459ef2da32c447195,
+        type: 3}
+      propertyPath: LobbyPanel
+      value: 
+      objectReference: {fileID: 1184255397}
     - target: {fileID: 2365650871166815677, guid: c1c935e35b1a678459ef2da32c447195,
         type: 3}
       propertyPath: m_LocalPosition.x
