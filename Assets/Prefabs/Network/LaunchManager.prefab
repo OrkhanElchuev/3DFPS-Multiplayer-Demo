@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0dd7ef66ba2584eba928dd2128ca32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnterGamePanel: {fileID: 0}
+  ConnectionStatusPanel: {fileID: 0}

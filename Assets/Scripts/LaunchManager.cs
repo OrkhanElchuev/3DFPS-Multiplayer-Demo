@@ -5,17 +5,16 @@ using Photon.Pun;
 
 public class LaunchManager : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject EnterGamePanel;
+    public GameObject ConnectionStatusPanel;
+
+    private void Start()
     {
-        
+        EnterGamePanel.SetActive(true);
+        ConnectionStatusPanel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    #region Photon Callbacks
 
     // This method is called on connection to the master server (Photon Server)
     public override void OnConnectedToMaster()
@@ -37,6 +36,9 @@ public class LaunchManager : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.IsConnected)
         {
             PhotonNetwork.ConnectUsingSettings();
+            ConnectionStatusPanel.SetActive(true);
+            EnterGamePanel.SetActive(false);
         }
     }
+    #endregion
 }
