@@ -10,15 +10,24 @@ public class LaunchManager : MonoBehaviourPunCallbacks
     public GameObject ConnectionStatusPanel;
     public GameObject LobbyPanel;
 
+    #region Unity Methods
 
+    private void Awake()
+    {
+        // Load the same level as the master client for other clients
+        PhotonNetwork.AutomaticallySyncScene = true;
+    }
 
-    #region Private Methods
     private void Start()
     {
         EnterGamePanel.SetActive(true);
         ConnectionStatusPanel.SetActive(false);
         LobbyPanel.SetActive(false);
     }
+
+    #endregion
+
+    #region Private Methods
 
     private void CreateAndJoinRoom()
     {
@@ -85,13 +94,15 @@ public class LaunchManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log(PhotonNetwork.NickName + " joined to " + PhotonNetwork.CurrentRoom.Name);
+        // Load Game play scene
+        PhotonNetwork.LoadLevel("GamePlay");
     }
 
     // This method is called when remote player enters an existing room 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log(newPlayer.NickName + " joined to " + PhotonNetwork.CurrentRoom.Name 
-        + " " + PhotonNetwork.CurrentRoom.PlayerCount);
+        Debug.Log(newPlayer.NickName + " joined to " + PhotonNetwork.CurrentRoom.Name
+        + " Player Count: " + PhotonNetwork.CurrentRoom.PlayerCount);
     }
 
     #endregion
