@@ -930,7 +930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3611350d2471d344ad35f6331f1de4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  healthBar: {fileID: 4344534659007513438}
+  initialHealth: 100
 --- !u!1001 &6998266550598985615
 PrefabInstance:
   m_ObjectHideFlags: 0
