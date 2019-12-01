@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Shooting : MonoBehaviour
 {
@@ -39,6 +40,13 @@ public class Shooting : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100))
             {
                 Debug.Log(hit.collider.gameObject.name);
+                // Check if ray is colliding with other player and not with himself 
+                if (hit.collider.gameObject.CompareTag("Player") 
+                && !hit.collider.gameObject.GetComponent<PhotonView>().IsMine)
+                {
+                    hit.collider.gameObject.GetComponent<PhotonView>().RPC("ReceiveDamage",
+                    RpcTarget.AllBuffered, 10f);
+                }
             }
         }
     }
