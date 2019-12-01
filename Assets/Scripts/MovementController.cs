@@ -14,6 +14,8 @@ public class MovementController : MonoBehaviour
     private float cameraUpDownMovementSpeed = 0f;
     private float currentCameraUpDownMovementSpeed = 0f;
 
+    #region Unity Methods
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +50,7 @@ public class MovementController : MonoBehaviour
             fpsCamera.transform.localEulerAngles = new Vector3(currentCameraUpDownMovementSpeed, 0, 0);
         }
     }
+    #endregion
 
     #region Setters
 
@@ -68,6 +71,7 @@ public class MovementController : MonoBehaviour
 
     #endregion
 
+    #region Player Movement
     // Handle velocity 
     Vector3 MovePlayer()
     {
@@ -89,4 +93,5 @@ public class MovementController : MonoBehaviour
         // Calculate and return value for player rotation
         return new Vector3(0, rotationOnY, 0) * mouseRotationSensitivity;
     }
+    #endregion
 }
