@@ -2,21 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 public class PlayerSetup : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject FPSCamera;
+    [SerializeField] TextMeshProUGUI playerName;
 
     // Start is called before the first frame update
     void Start()
     {
         ControlOnlyMyPlayer();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        SetPlayerUI();
     }
 
     // Disable the movement controller and camera on other players
@@ -32,6 +29,15 @@ public class PlayerSetup : MonoBehaviourPunCallbacks
         {
             transform.GetComponent<MovementController>().enabled = false;
             transform.GetComponent<Camera>().enabled = false;
+        }
+    }
+
+    private void SetPlayerUI()
+    {
+        if (playerName != null)
+        {
+            // Set player's name 
+            playerName.text = photonView.Owner.NickName;
         }
     }
 }
