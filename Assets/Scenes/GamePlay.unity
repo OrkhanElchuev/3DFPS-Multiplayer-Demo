@@ -220,12 +220,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: ce7348d724aa0fc44aaf53391b9bae9b, type: 3}
---- !u!1 &705084222 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 705084222, guid: 147610e34715ac64b9cc11e3de9f72cf,
-    type: 3}
-  m_PrefabInstance: {fileID: 6998266549230524566}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1120751052 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5692243814397984061, guid: 96cd3d6f9a84ac944b053fbda1213b35,
@@ -562,10 +556,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1316316834, guid: 147610e34715ac64b9cc11e3de9f72cf, type: 3}
-      propertyPath: fpsCamera
-      value: 
-      objectReference: {fileID: 705084222}
     - target: {fileID: 6998266550026543092, guid: 147610e34715ac64b9cc11e3de9f72cf,
         type: 3}
       propertyPath: m_Name

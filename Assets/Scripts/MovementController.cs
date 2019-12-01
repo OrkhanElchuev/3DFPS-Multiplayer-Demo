@@ -25,14 +25,13 @@ public class MovementController : MonoBehaviour
     {
         SetPlayerVelocity(MovePlayer());
         SetPlayerRotation(RotatePlayer());
-        
+
         float cameraUpDownMovement = Input.GetAxis("Mouse Y") * mouseRotationSensitivity;
         SetCameraMovement(cameraUpDownMovement);
     }
 
     private void FixedUpdate()
     {
-        // Check player's velocity
         if (velocity != Vector3.zero)
         {
             // Move rigid body 
@@ -44,6 +43,8 @@ public class MovementController : MonoBehaviour
         if (fpsCamera != null)
         {
             currentCameraUpDownMovementSpeed -= cameraUpDownMovementSpeed;
+            // Limit the camera movement area (to avoid looking too far up or down)
+            currentCameraUpDownMovementSpeed = Mathf.Clamp(currentCameraUpDownMovementSpeed, -75, 75);
             fpsCamera.transform.localEulerAngles = new Vector3(currentCameraUpDownMovementSpeed, 0, 0);
         }
     }

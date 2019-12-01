@@ -538,3 +538,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 8
+  mouseRotationSensitivity: 3
+  fpsCamera: {fileID: 705084222}
