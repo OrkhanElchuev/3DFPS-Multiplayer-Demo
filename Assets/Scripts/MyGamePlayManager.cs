@@ -34,6 +34,8 @@ public class MyGamePlayManager : MonoBehaviourPunCallbacks
                 // Instantiate player object on a random point in a specified range
                 PhotonNetwork.Instantiate(playerPrefab.name,
                 new Vector3(randomSpawnPoint, 0, randomSpawnPoint), Quaternion.identity);
+                // To avoid multiple audio listener in one scene warning
+                FindObjectOfType<Camera>().GetComponent<AudioListener>().enabled = false;
             }
         }
     }
