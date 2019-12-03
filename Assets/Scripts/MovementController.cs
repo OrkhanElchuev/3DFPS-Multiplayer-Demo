@@ -25,10 +25,10 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float cameraUpDownMovement = Input.GetAxis("Mouse Y") * mouseRotationSensitivity;
+        // Set relevant values
         SetPlayerVelocity(MovePlayer());
         SetPlayerRotation(RotatePlayer());
-
-        float cameraUpDownMovement = Input.GetAxis("Mouse Y") * mouseRotationSensitivity;
         SetCameraMovement(cameraUpDownMovement);
     }
 
@@ -72,6 +72,7 @@ public class MovementController : MonoBehaviour
     #endregion
 
     #region Player Movement
+
     // Handle velocity 
     Vector3 MovePlayer()
     {
@@ -93,5 +94,6 @@ public class MovementController : MonoBehaviour
         // Calculate and return value for player rotation
         return new Vector3(0, rotationOnY, 0) * mouseRotationSensitivity;
     }
+
     #endregion
 }
