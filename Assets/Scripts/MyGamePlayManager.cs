@@ -30,6 +30,8 @@ public class MyGamePlayManager : MonoBehaviourPunCallbacks
         {
             if (playerPrefab != null)
             {
+                // Hide cursor for player in game play scene
+                Cursor.visible = false;
                 int randomSpawnPoint = Random.Range(-18, 18);
                 // Instantiate player object on a random point in a specified range
                 PhotonNetwork.Instantiate(playerPrefab.name,
@@ -46,7 +48,7 @@ public class MyGamePlayManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
     }
-    
+
     #region Photon Callbacks
 
     public override void OnLeftRoom()
@@ -65,6 +67,6 @@ public class MyGamePlayManager : MonoBehaviourPunCallbacks
         Debug.Log(newPlayer.NickName + " joined to " + PhotonNetwork.CurrentRoom.Name
         + " Player Count: " + PhotonNetwork.CurrentRoom.PlayerCount);
     }
-    
+
     #endregion
 }
