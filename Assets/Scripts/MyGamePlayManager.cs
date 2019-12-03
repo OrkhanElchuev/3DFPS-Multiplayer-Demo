@@ -53,6 +53,7 @@ public class MyGamePlayManager : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
+        Cursor.visible = true;
         SceneManager.LoadScene("GameLauncherScene");
     }
 
